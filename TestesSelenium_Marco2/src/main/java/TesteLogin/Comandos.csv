@@ -1,0 +1,3 @@
+http://www.lesse.com.br/tools/silverbullet/rp2; dionasmuller.aluno@unipampa.edu.br<> email<> id; senhaTeste<> password<> id; login-submit<> id
+http://www.lesse.com.br/tools/silverbullet/rp2; login-submit<> id; //strong[4]/p<> xpath
+http://www.lesse.com.br/tools/silverbullet/rp2; dionasmuller.aluno@unipampa.edu.br<> email<> id; senha<> password<> id; login-submit<> id; //strong[4]/p<> xpath

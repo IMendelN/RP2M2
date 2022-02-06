@@ -1,98 +1,86 @@
 package TesteLogin;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
-import java.io.FileReader;
-
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.After;
 import org.junit.AfterClass;
+import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Dimension;
-import org.openqa.selenium.Point;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 
-import com.opencsv.CSVReader;
+import Ferramentas.Driver;
+import Ferramentas.LeitorCsv;
 
 public class TesteLogin {
-	public static WebDriver driver;
-	public static CSVReader leitor;
-	public static String resultados[];
+	public static LeitorCsv leitorResultados;
+	public static LeitorCsv leitorComandos;
+	public String resultados[];
+	public String comandos[];
+	public Driver nav;
 	
 	
 	@BeforeClass
 	public static final void setUp() throws Exception {
-		leitor = new CSVReader(new FileReader(".\\src\\main\\java\\TesteLogin\\Resultados.csv"));
+		leitorResultados = new LeitorCsv(".\\src\\main\\java\\TesteLogin\\Resultados.csv");
+		leitorComandos = new LeitorCsv(".\\src\\main\\java\\TesteLogin\\Comandos.csv");
 		System.setProperty("webdriver.chrome.driver", ".\\src\\main\\resources\\chromedriver.exe");
 	}
 	
 	@Before
 	public final void setBefore() throws Exception {
-		String cell[];
-		if((cell = leitor.readNext()) != null) {
-			for(String dadosCSV : cell){
-				resultados = dadosCSV.split("; ");
-			}
-		}
-		driver = new ChromeDriver();
-		driver.manage().window().setPosition(new Point(100, 100));
-		driver.manage().window().setSize(new Dimension(675, 450));
+		nav = new Driver();
+		comandos = leitorComandos.lerProximaLinhaSeparando("; ");
+		resultados = leitorResultados.lerProximaLinhaSeparando("; ");
 	}
 
 	@Test
 	public void testFluxoPrincipal() throws InterruptedException {
-		driver.get("http://www.lesse.com.br/tools/silverbullet/rp2");
+		nav.get(comandos[0]);
 		Thread.sleep(500);
-		driver.findElement(By.id("email")).sendKeys("dionasmuller.aluno@unipampa.edu.br");
-		driver.findElement(By.id("password")).sendKeys("senhaTeste");
-		driver.findElement(By.id("login-submit")).click();
+		nav.sendKeysCsv(comandos[1]);
+		nav.sendKeysCsv(comandos[2]);
+		nav.clickCsv(comandos[3]);
 		Thread.sleep(500);
-		assertEquals(resultados[0], driver.getCurrentUrl());
+		assertEquals(resultados[0], nav.getUrl());
 	}
 	
 	//O teste esta Apresentando A MSG5 e nao a MSG2 como previsto;
 	@Test
 	public void testFluxoAlternativo1() throws InterruptedException {
-		driver.get("http://www.lesse.com.br/tools/silverbullet/rp2");
+		nav.get(comandos[0]);
 		Thread.sleep(500);
-	    driver.findElement(By.id("login-submit")).click();
-	    driver.findElement(By.id("login-submit")).click();
+		nav.clickCsv(comandos[1]);
+		nav.clickCsv(comandos[1]);
 	    Thread.sleep(500);
-	    assertEquals(resultados[0], driver.getCurrentUrl());
-	    assertEquals(resultados[1],driver.getTitle());
-	    assertEquals(resultados[2],driver.findElement(By.cssSelector("strong:nth-child(6) > .flashMsg")).getText());
+	    assertEquals(resultados[0], nav.getUrl());
+	    assertEquals(resultados[1], nav.getTitle());
+	    assertEquals(resultados[2], nav.getTextCsv(comandos[2]));
 	}
 	
-	@Test
+	@Test 
 	public void testFluxoAlternativo2() throws InterruptedException {
-		driver.get("http://www.lesse.com.br/tools/silverbullet/rp2");
+		nav.get(comandos[0]);
 		Thread.sleep(500);
-		driver.findElement(By.id("email")).sendKeys("dionasmuller.aluno@unipampa.edu.br");
-		driver.findElement(By.id("password")).sendKeys("senha");
-		driver.findElement(By.id("login-submit")).click();
+		for(int i = 0; i < 2; i++) {
+		nav.sendKeysCsv(comandos[1]);
+		nav.sendKeysCsv(comandos[2]);
+		nav.clickCsv(comandos[3]);
 		Thread.sleep(500);
-		driver.findElement(By.id("email")).sendKeys("dionasmuller.aluno@unipampa.edu.br");
-		driver.findElement(By.id("password")).sendKeys("senha");
-		driver.findElement(By.id("login-submit")).click();
-		Thread.sleep(500);
-		assertEquals(resultados[0], driver.getCurrentUrl());
-		assertEquals(resultados[1],driver.getTitle());
-	    assertEquals(resultados[2],driver.findElement(By.cssSelector("strong:nth-child(6) > .flashMsg")).getText());
+		}
+		assertEquals(resultados[0], nav.getUrl());
+		assertEquals(resultados[1], nav.getTitle());
+	    assertEquals(resultados[2], nav.getTextCsv(comandos[4]));
 	}
 	
 	
 	@After
 	  public final void after() throws InterruptedException {
 		 Thread.sleep(500);
-		 driver.close();
+		 nav.getDriver().quit();
 	 }
 	
 	 @AfterClass
 	  public static final void afterClass() throws InterruptedException {
 		 Thread.sleep(500);
-		 driver.quit();
-	 }
+		 }
 
 }
