@@ -11,7 +11,7 @@ import elementos.Login;
 
 public class Driver {
 	WebDriver driver;
-
+ 
 	public Driver() {
 		System.setProperty("webdriver.chrome.driver", ".\\src\\main\\resources\\chromedriver.exe");
 		driver = new ChromeDriver();
@@ -44,9 +44,13 @@ public class Driver {
 		return getElemento(elemento, by).getAttribute("value");
 	}
 
-	public String getValueCsv(String comando) {
+	public String getValue(String comando) {
 		String comandos[] = comando.split("<> ");
 		return getValue(comandos[0], comandos[1]);
+	}
+	
+	public String getValue(String comando[]) {
+		return getValue(comando[0], comando[1]);
 	}
 
 	public String getUrl() {
