@@ -13,4 +13,5 @@ public class SheduleNetworkDiagram {
 	public static final String UploadArquivo[] = {"//*[@id='img']/div[2]/div/div/input", "xpath"};
 	public static final String UploadSave[] = {"//div[3]/div/div/button/i", "xpath"};
 	public static final String ExcluiImagem[] = {"//td[4]/div/div/a", "xpath"};
+	public static final String MensagemCampoNaoPreenchido[] = {"//form/ul/div[3]","xpath"};
 }

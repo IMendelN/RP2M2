@@ -75,14 +75,6 @@ public class TesteRF22_2 {
 		nav.click(SheduleNetworkDiagram.Upload);
 		Thread.sleep(1000);
 		nav.sendKeys("teste", SheduleNetworkDiagram.UploadName);
-		/*
-		 * { WebElement element =
-		 * nav.getDriver().findElement(By.cssSelector(".col-lg-12 > .form-group > input"
-		 * )); Actions builder = new Actions(nav.getDriver());
-		 * builder.moveToElement(element).perform(); } { WebElement element =
-		 * nav.getDriver().findElement(By.tagName("body")); Actions builder = new
-		 * Actions(nav.getDriver()); builder.moveToElement(element, 0, 0).perform(); }
-		 */
 		nav.sendKeys(System.getProperty("user.dir")
 				+ "\\src\\main\\resources\\ImagemTestes.png", SheduleNetworkDiagram.UploadArquivo);
 		nav.click(SheduleNetworkDiagram.UploadSave);
