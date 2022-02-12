@@ -63,6 +63,10 @@ public class DSL {
 		driver.findElement(By.cssSelector(css_campo)).clear();
 		}
 
+	public void limpaCampoXpath(String xpath_campo) {
+		driver.findElement(By.xpath(xpath_campo)).clear();
+	}
+
 	public void clicaRadio(String id_campo) {
 		driver.findElement(By.id(id_campo)).click();
 	}
