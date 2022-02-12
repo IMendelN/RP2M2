@@ -13,14 +13,21 @@ import org.openqa.selenium.chrome.ChromeDriver;
 public class Resource {
 
 	private DSL dsl;
+
+	private SilverBulletPage page;
+
 	
 	@Before
 	public final void setUp() throws Exception {
 		System.setProperty("webdriver.chrome.driver", ".\\src\\main\\resources\\chromedriver.exe");
 	    WebDriver driver = new ChromeDriver();
 		driver.manage().window().setPosition(new Point(100, 100));
+		driver.manage().window().setSize(new Dimension(1500,1500));
+		dsl = new DSL(driver);
+		page = new SilverBulletPage(driver);
 		driver.manage().window().setSize(new Dimension(900, 900));
 		dsl = new DSL(driver);
+
 
 	}
 	
@@ -31,8 +38,39 @@ public class Resource {
 	
 	@Test
 	public void FluxoPrincipal()   { 
+
+		page.inicia();
 		
+		page.setEmail("adrielluan.aluno@unipampa.edu.br");
+		assertEquals("adrielluan.aluno@unipampa.edu.br",dsl.obterValorCampo("email"));
 		
+		page.setSenha("1040.shiriuuu");
+		assertEquals("1040.shiriuuu",dsl.obterValorCampo("password"));
+		
+        page.entrar();
+        assertEquals("http://www.lesse.com.br/tools/silverbullet/rp2/projects", dsl.UrlCorreta());
+        
+        page.openProject();
+        assertEquals("http://www.lesse.com.br/tools/silverbullet/rp2/project/73", dsl.UrlCorreta());
+        
+        page.resourceRequeriment();
+        assertEquals("http://www.lesse.com.br/tools/silverbullet/rp2/schedule/resource-requirements/list/73", dsl.UrlCorreta());
+        
+        page.resourceEdit();
+        assertEquals("http://www.lesse.com.br/tools/silverbullet/rp2/schedule/resource-requirements/edit/534", dsl.UrlCorreta());
+        
+		page.resourceDesc("teste2");
+		assertEquals("teste2", dsl.obterValorCampo("resource_description"));
+		
+		page.resourceAmont("1");
+		assertEquals("1", dsl.obterValorCampo("required_amount_of_resource"));
+		
+		page.resourceUnit("0.01");
+		assertEquals("0.01", dsl.obterValorCampo("resource_cost_per_unit"));
+		
+		page.resourceRR("text");
+		assertEquals("text", dsl.obterValorCampoCss("#rr_txt_4"));
+
 		dsl.get("http://www.lesse.com.br/tools/silverbullet/rp2");
 		dsl.escreveID("email", "adrielluan.aluno@unipampa.edu.br");
 		assertEquals("adrielluan.aluno@unipampa.edu.br",dsl.obterValorCampo("email"));
@@ -62,6 +100,7 @@ public class Resource {
 		assertEquals("test", dsl.obterValorCampoCss("#rr_txt_4"));
 		
 		dsl.clicaRadioCss("#activity-submit");
+
 				
 	}	
 }

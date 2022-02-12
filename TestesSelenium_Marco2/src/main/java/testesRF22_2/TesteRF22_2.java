@@ -34,7 +34,7 @@ public class TesteRF22_2 {
 		nav.getDriver().manage().window().maximize();
 		Thread.sleep(1000);
 		nav.click(InicioProjeto.AbrirProjeto1);
-		Thread.sleep(5000);
+		Thread.sleep(2000);
 		nav.click(InProjeto.SheNetDiag);
 	}
 
