@@ -14,4 +14,11 @@ public class SheduleNetworkDiagram {
 	public static final String UploadSave[] = {"//div[3]/div/div/button/i", "xpath"};
 	public static final String ExcluiImagem[] = {"//td[4]/div/div/a", "xpath"};
 	public static final String MensagemCampoNaoPreenchido[] = {"//form/ul/div[3]","xpath"};
+	public static final String TextActivityName0[] = {"//table[@id='tableNB']/tbody/tr/td","xpath"};
+	public static final String TextProcessorActivity1[] = {"//table[@id='tableNB']/tbody/tr/td[2]","xpath"};
+	public static final String TextDepencdenceType2[] = {"//table[@id='tableNB']/tbody/tr/td[3]","xpath"};
+	public static final String TextAntecipation3[] = {"//table[@id='tableNB']/tbody/tr/td[4]","xpath"};
+	public static final String TextWait4[] = {"//table[@id='tableNB']/tbody/tr/td[5]","xpath"};
+	public static final String NameImage1[]= {"//table[@id='tableNB']/tbody/tr/td[5]","xpath"};
+	
 }
