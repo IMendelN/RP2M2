@@ -1,6 +1,5 @@
 package Adriel;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class SilverBulletPage {
@@ -136,7 +135,7 @@ public class SilverBulletPage {
 		dsl.clicaRadioCss(".col-lg-12 > .btn-info");
 		Thread.sleep(500);
 		dsl.escreveCss(".row:nth-child(1) > .col-lg-6 .form-control", "teste");
-		dsl.escreveCss(".col-lg-12 > .form-group > input", "C:\\Users\\adrie\\OneDrive\\Área de Trabalho\\RP ll\\Nova pasta\\teste.txt");
+		dsl.escreveCss(".col-lg-12 > .form-group > input", System.getProperty("user.dir") + "\\src\\main\\resources\\ImagemTestes.png");
 		dsl.clicaRadioCss(".btn-success:nth-child(1)");
 	}
 }
