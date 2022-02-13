@@ -8,10 +8,8 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import Ferramentas.Driver;
 import Ferramentas.LeitorCsv;
-import elementos.InProjeto;
-import elementos.InicioProjeto;
+import Ferramentas.OperacoesDriver;
 import elementos.Login;
 import elementos.SheduleNetworkDiagram;
 
@@ -21,67 +19,61 @@ public class TesteRF22_2 {
 	public static LeitorCsv leitorComandos;
 	public String resultados[];
 	public String comandos[];
-	public static Driver nav;
+	public static OperacoesDriver nav;
 
 	@BeforeClass
 	public static final void setUp() throws Exception {
 		System.setProperty("webdriver.chrome.driver", ".\\src\\main\\resources\\chromedriver.exe");
 	}
-
+	
 	@Before
 	public final void setBefore() throws Exception {
-		nav = new Driver();
+		nav = new OperacoesDriver();
 		nav.get(Login.URL);
-		nav.fazLogin();
-		nav.getDriver().manage().window().maximize();
+		nav.fazLogin("dionasmuller.aluno@unipampa.edu.br", "senhaTeste");
 		Thread.sleep(1000);
-		nav.click(InicioProjeto.AbrirProjeto1);
-		Thread.sleep(2000);
-		nav.click(InProjeto.SheNetDiag);
+		nav.getDriver().manage().window().maximize();
+		nav.abreProjeto1();
+		Thread.sleep(500);
+		nav.abreScheduleNetworkDiagram();
 	}
 
 	@Test
 	public void fluxoPrincipal() throws InterruptedException {
-		nav.click(SheduleNetworkDiagram.Edit);
-		
-		nav.click(SheduleNetworkDiagram.EditTxt1);
-		nav.limpaTexto(SheduleNetworkDiagram.EditTxt1);
-		nav.sendKeys("Teste´´", SheduleNetworkDiagram.EditTxt1);
 
-		nav.click(SheduleNetworkDiagram.EditTxt2);
-		nav.limpaTexto(SheduleNetworkDiagram.EditTxt2);
-		nav.sendKeys("Teste]][[", SheduleNetworkDiagram.EditTxt2);
-
-		nav.click(SheduleNetworkDiagram.EditTxt3);
-		nav.limpaTexto(SheduleNetworkDiagram.EditTxt3);
-		nav.sendKeys("Teste", SheduleNetworkDiagram.EditTxt3);
-
-		nav.click(SheduleNetworkDiagram.EditTxt4);
-		nav.limpaTexto(SheduleNetworkDiagram.EditTxt4);
-		nav.sendKeys("Teste123456", SheduleNetworkDiagram.EditTxt4);
-
-		Thread.sleep(500);
-		nav.click(SheduleNetworkDiagram.EditSubmit);
-		assertEquals(SheduleNetworkDiagram.URL, nav.getUrl());
+		nav.scheduleNetworkDiagram_Edit("Teste", "Teste", "Teste[]", "Teste123");
+	
 		assertEquals("Teste",nav.getText(SheduleNetworkDiagram.TextActivityName0));
-		assertEquals("Teste´´",nav.getText(SheduleNetworkDiagram.TextProcessorActivity1));
-		assertEquals("Teste]][[",nav.getText(SheduleNetworkDiagram.TextDepencdenceType2));
-		assertEquals("Teste",nav.getText(SheduleNetworkDiagram.TextAntecipation3));
-		assertEquals("Teste123456",nav.getText(SheduleNetworkDiagram.TextWait4));
+		assertEquals("Teste",nav.getText(SheduleNetworkDiagram.TextProcessorActivity1));
+		assertEquals("Teste",nav.getText(SheduleNetworkDiagram.TextDepencdenceType2));
+		assertEquals("Teste[]",nav.getText(SheduleNetworkDiagram.TextAntecipation3));
+		assertEquals("Teste123",nav.getText(SheduleNetworkDiagram.TextWait4));
 	}
 
 	@Test
 	public void FluxoAlternativo1() throws InterruptedException {
-		nav.click(SheduleNetworkDiagram.Upload);
 		Thread.sleep(1000);
-		nav.sendKeys("teste", SheduleNetworkDiagram.UploadName);
-		nav.sendKeys(System.getProperty("user.dir")
-				+ "\\src\\main\\resources\\ImagemTestes.png", SheduleNetworkDiagram.UploadArquivo);
-		nav.click(SheduleNetworkDiagram.UploadSave);
+		nav.scheduleNetworkDiagram_Upload("Teste", System.getProperty("user.dir") + "\\src\\main\\resources\\ImagemTestes.png");
 		Thread.sleep(1000);
 		assertNotNull(nav.getText(SheduleNetworkDiagram.NameImage1));
-		nav.click(SheduleNetworkDiagram.ExcluiImagem);
-		assertEquals(SheduleNetworkDiagram.URL, nav.getUrl());
+		nav.scheduleNetworkDiagram_ExcluiImagem();
+	}
+	
+	@Test
+	public void FluxoExcecao() throws InterruptedException {
+		nav.scheduleNetworkDiagram_EditExcecao();
+		assertNotNull(nav.getElemento(SheduleNetworkDiagram.EditMensagemCampoNaoPreenchido));
+		assertEquals("http://www.lesse.com.br/tools/silverbullet/rp2/schedule/project-schedule-network-diagram/edit/533", nav.getUrl());
+		nav.click(SheduleNetworkDiagram.EditBack);
+		Thread.sleep(1000);
+		
+		nav.scheduleNetworkDiagram_UploadExcecao();
+		assertNotNull(nav.getElemento(SheduleNetworkDiagram.UploadMensagemCampoNaoPreenchido));
+		nav.click(SheduleNetworkDiagram.UploadClose);
+		
+		assertEquals("http://www.lesse.com.br/tools/silverbullet/rp2/schedule/project-schedule-network-diagram/list/84?", nav.getUrl());
+		Thread.sleep(1000);
+
 	}
 
 	@After
