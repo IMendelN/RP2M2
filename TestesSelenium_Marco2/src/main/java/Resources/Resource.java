@@ -9,59 +9,74 @@ import org.openqa.selenium.Dimension;
 import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import Adriel.DSL;
+import Adriel.SilverBulletPage;
 
 public class Resource {
 
 	private DSL dsl;
-	
+
+	private SilverBulletPage page;
+
 	@Before
 	public final void setUp() throws Exception {
 		System.setProperty("webdriver.chrome.driver", ".\\src\\main\\resources\\chromedriver.exe");
-	    WebDriver driver = new ChromeDriver();
+		WebDriver driver = new ChromeDriver();
 		driver.manage().window().setPosition(new Point(100, 100));
+		driver.manage().window().setSize(new Dimension(1500, 1500));
+		dsl = new DSL(driver);
+		page = new SilverBulletPage(driver);
 		driver.manage().window().setSize(new Dimension(900, 900));
 		dsl = new DSL(driver);
 
 	}
-	
-	@After 
+
+	@After
 	public void Finalizar() {
-		dsl.close();;
+		dsl.close();
+		;
 	}
-	
+
 	@Test
-	public void FluxoPrincipal()   { 
-		
-		
-		dsl.get("http://www.lesse.com.br/tools/silverbullet/rp2");
-		dsl.escreveID("email", "iagonogueira.aluno@unipampa.edu.br");
-		assertEquals("iagonogueira.aluno@unipampa.edu.br",dsl.obterValorCampo("email"));
-		dsl.escreveID("password","testesenha");
-		assertEquals("testesenha",dsl.obterValorCampo("password"));
-        dsl.clicaRadio("login-submit");
-        
-        
-        dsl.clicaXpath("//td[3]/a/span");
-		dsl.clicaXpath("//div[4]/div/div[3]/a[2]/div/div");
-		dsl.clicaXpath("//div/div/form/button");
-		
-		dsl.limpaCampo("resource_description");
-		dsl.escreveID("resource_description", "teste2");
+	public void FluxoPrincipal() {
+
+		page.inicia();
+
+		page.setEmail("iagonogueira.aluno@unipampa.edu.br");
+		assertEquals("iagonogueira.aluno@unipampa.edu.br", dsl.obterValorCampo("email"));
+
+		page.setSenha("testesenha");
+		assertEquals("testesenha", dsl.obterValorCampo("password"));
+
+		page.entrar();
+		assertEquals("http://www.lesse.com.br/tools/silverbullet/rp2/projects", dsl.UrlCorreta());
+
+		page.openProject();
+		assertEquals("http://www.lesse.com.br/tools/silverbullet/rp2/project/68", dsl.UrlCorreta());
+
+		page.resourceRequeriment();
+		assertEquals("http://www.lesse.com.br/tools/silverbullet/rp2/schedule/resource-requirements/list/68",
+				dsl.UrlCorreta());
+
+		page.resourceEdit();
+		assertEquals("http://www.lesse.com.br/tools/silverbullet/rp2/schedule/resource-requirements/edit/545",
+				dsl.UrlCorreta());
+
+		page.resourceDesc("teste2");
 		assertEquals("teste2", dsl.obterValorCampo("resource_description"));
-		
-		dsl.limpaCampo("required_amount_of_resource");
-		dsl.escreveID("required_amount_of_resource", "1");
+
+		page.resourceAmont("1");
 		assertEquals("1", dsl.obterValorCampo("required_amount_of_resource"));
-		
-		dsl.limpaCampo("resource_cost_per_unit");
-		dsl.escreveID("resource_cost_per_unit", "0.01");
+
+		page.resourceUnit("0.01");
 		assertEquals("0.01", dsl.obterValorCampo("resource_cost_per_unit"));
-		
-		dsl.limpaCampoCss("#rr_txt_4");
-		dsl.escreveCss("#rr_txt_4", "test");
-		assertEquals("test", dsl.obterValorCampoCss("#rr_txt_4"));
-		
-		dsl.clicaRadioCss("#activity-submit");
-				
-	}	
+
+		page.resourceRR("text");
+		assertEquals("text", dsl.obterValorCampoCss("#rr_txt_4"));
+
+		page.resourceSub();
+		assertEquals("http://www.lesse.com.br/tools/silverbullet/rp2/schedule/resource-requirements/list/68",
+				dsl.UrlCorreta());
+
+	}
 }
