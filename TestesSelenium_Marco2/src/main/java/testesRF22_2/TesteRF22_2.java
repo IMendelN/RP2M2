@@ -2,7 +2,6 @@ package testesRF22_2;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
 
 import org.junit.After;
 import org.junit.Before;
@@ -11,7 +10,10 @@ import org.junit.Test;
 
 import Ferramentas.Driver;
 import Ferramentas.LeitorCsv;
-import elementos.*;
+import elementos.InProjeto;
+import elementos.InicioProjeto;
+import elementos.Login;
+import elementos.SheduleNetworkDiagram;
 
 public class TesteRF22_2 {
 
