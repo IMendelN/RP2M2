@@ -1,7 +1,5 @@
 package Adriel;
 
-import static org.junit.Assert.assertEquals;
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -41,20 +39,15 @@ public class ResourceRequirements {
 	page.inicia();
 	
 	page.setEmail("adrielluan.aluno@unipampa.edu.br");
-	assertEquals("adrielluan.aluno@unipampa.edu.br",dsl.obterValorCampo("email"));
 	
 	page.setSenha("1040.shiriuuu");
-	assertEquals("1040.shiriuuu",dsl.obterValorCampo("password"));
-	
+
     page.entrar();
-    assertEquals("http://www.lesse.com.br/tools/silverbullet/rp2/projects", dsl.UrlCorreta());
-    
+
     page.openProject();
-    assertEquals("http://www.lesse.com.br/tools/silverbullet/rp2/project/73", dsl.UrlCorreta());
-    
+
     page.resourceRequeriment();
-    assertEquals("http://www.lesse.com.br/tools/silverbullet/rp2/schedule/resource-requirements/list/73", dsl.UrlCorreta());
-    
+
     Thread.sleep(500);
     
     page.UploadResource();
