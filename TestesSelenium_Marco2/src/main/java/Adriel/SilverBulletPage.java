@@ -1,7 +1,10 @@
 package Adriel;
 
+<<<<<<< HEAD
 import static org.junit.Assert.assertEquals;
 
+=======
+>>>>>>> 0d6552e5a35c4e3b48b77cb1711510e8c29d5e73
 import org.openqa.selenium.WebDriver;
 
 public class SilverBulletPage {
@@ -155,7 +158,7 @@ public class SilverBulletPage {
 		dsl.clicaRadioCss(".col-lg-12 > .btn-info");
 		Thread.sleep(500);
 		dsl.escreveCss(".row:nth-child(1) > .col-lg-6 .form-control", "teste");
-		dsl.escreveCss(".col-lg-12 > .form-group > input", "C:\\Users\\adrie\\OneDrive\\Área de Trabalho\\RP ll\\Nova pasta\\teste.txt");
+		dsl.escreveCss(".col-lg-12 > .form-group > input", System.getProperty("user.dir") + "\\src\\main\\resources\\ImagemTestes.png");
 		dsl.clicaRadioCss(".btn-success:nth-child(1)");
 	}
 }
