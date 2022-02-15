@@ -36,7 +36,6 @@ public class ResourceRequirements {
 	@Test
 	public void fluxoAlternativo() throws InterruptedException {
 
-<<<<<<< HEAD:TestesSelenium_Marco2/src/main/java/Adriel/ResourceRequirements.java
 	page.inicia();
 	
 	page.setEmail("adrielluan.aluno@unipampa.edu.br");
@@ -53,29 +52,5 @@ public class ResourceRequirements {
     
     page.UploadResource();
 	
-=======
-		page.inicia();
-
-		page.setEmail("iagonogueira.aluno@unipampa.edu.br");
-		assertEquals("iagonogueira.aluno@unipampa.edu.br", dsl.obterValorCampo("email"));
-
-		page.setSenha("testesenha");
-		assertEquals("testesenha", dsl.obterValorCampo("password"));
-
-		page.entrar();
-		assertEquals("http://www.lesse.com.br/tools/silverbullet/rp2/projects", dsl.UrlCorreta());
-
-		page.openProject();
-		assertEquals("http://www.lesse.com.br/tools/silverbullet/rp2/project/68", dsl.UrlCorreta());
-
-		page.resourceRequeriment();
-		assertEquals("http://www.lesse.com.br/tools/silverbullet/rp2/schedule/resource-requirements/list/68",
-				dsl.UrlCorreta());
-
-		Thread.sleep(500);
-
-		page.UploadResource();
-
->>>>>>> 0d6552e5a35c4e3b48b77cb1711510e8c29d5e73:TestesSelenium_Marco2/src/main/java/Resources/ResourceRequirements.java
 	}
 }
