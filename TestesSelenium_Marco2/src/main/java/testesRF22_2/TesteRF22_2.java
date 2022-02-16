@@ -62,13 +62,11 @@ public class TesteRF22_2 {
 	@Test
 	public void FluxoExcecao() throws InterruptedException {
 		nav.scheduleNetworkDiagram_EditExcecao();
-		assertNotNull(nav.getElemento(SheduleNetworkDiagram.EditMensagemCampoNaoPreenchido));
 		assertEquals("http://www.lesse.com.br/tools/silverbullet/rp2/schedule/project-schedule-network-diagram/edit/533", nav.getUrl());
 		nav.click(SheduleNetworkDiagram.EditBack);
 		Thread.sleep(1000);
 		
 		nav.scheduleNetworkDiagram_UploadExcecao();
-		assertNotNull(nav.getElemento(SheduleNetworkDiagram.UploadMensagemCampoNaoPreenchido));
 		nav.click(SheduleNetworkDiagram.UploadClose);
 		
 		assertEquals("http://www.lesse.com.br/tools/silverbullet/rp2/schedule/project-schedule-network-diagram/list/84?", nav.getUrl());

@@ -35,6 +35,6 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/iagom/Downloads/opencsv-5.5.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Dionas Muller/Desktop/faculdade/RP 2/Marco 2/1_Meutrabalho/TestesSelenium_Marco2/src/main/resources/opencsv-5.5.2.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

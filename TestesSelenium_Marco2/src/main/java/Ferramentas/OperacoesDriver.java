@@ -47,7 +47,8 @@ public class OperacoesDriver extends Driver {
 		click(SheduleNetworkDiagram.EditSubmit);
 	}
 
-	public void scheduleNetworkDiagram_EditExcecao() {
+	public void scheduleNetworkDiagram_EditExcecao() throws InterruptedException {
+		Thread.sleep(1000);
 		click(SheduleNetworkDiagram.Edit);
 		limpaTexto(SheduleNetworkDiagram.EditTxt1);
 		limpaTexto(SheduleNetworkDiagram.EditTxt2);
@@ -64,7 +65,8 @@ public class OperacoesDriver extends Driver {
 		click(SheduleNetworkDiagram.UploadSave);
 	}
 	
-	public void scheduleNetworkDiagram_ExcluiImagem() {
+	public void scheduleNetworkDiagram_ExcluiImagem() throws InterruptedException {
+		Thread.sleep(100);
 		click(SheduleNetworkDiagram.ExcluiImagem);
 	}
 	
