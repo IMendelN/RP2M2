@@ -41,20 +41,14 @@ public class ResourceRequirements {
 		page.inicia();
 
 		page.setEmail("iagonogueira.aluno@unipampa.edu.br");
-		assertEquals("iagonogueira.aluno@unipampa.edu.br", dsl.obterValorCampo("email"));
 
 		page.setSenha("testesenha");
-		assertEquals("testesenha", dsl.obterValorCampo("password"));
 
 		page.entrar();
-		assertEquals("http://www.lesse.com.br/tools/silverbullet/rp2/projects", dsl.UrlCorreta());
 
 		page.openProject();
-		assertEquals("http://www.lesse.com.br/tools/silverbullet/rp2/project/68", dsl.UrlCorreta());
 
 		page.resourceRequeriment();
-		assertEquals("http://www.lesse.com.br/tools/silverbullet/rp2/schedule/resource-requirements/list/68",
-				dsl.UrlCorreta());
 
 		Thread.sleep(500);
 

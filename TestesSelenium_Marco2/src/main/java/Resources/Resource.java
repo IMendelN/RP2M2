@@ -1,7 +1,5 @@
 package Resources;
 
-import static org.junit.Assert.assertEquals;
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -9,6 +7,7 @@ import org.openqa.selenium.Dimension;
 import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+
 import Adriel.DSL;
 import Adriel.SilverBulletPage;
 
@@ -43,40 +42,26 @@ public class Resource {
 		page.inicia();
 
 		page.setEmail("iagonogueira.aluno@unipampa.edu.br");
-		assertEquals("iagonogueira.aluno@unipampa.edu.br", dsl.obterValorCampo("email"));
 
 		page.setSenha("testesenha");
-		assertEquals("testesenha", dsl.obterValorCampo("password"));
 
 		page.entrar();
-		assertEquals("http://www.lesse.com.br/tools/silverbullet/rp2/projects", dsl.UrlCorreta());
 
 		page.openProject();
-		assertEquals("http://www.lesse.com.br/tools/silverbullet/rp2/project/68", dsl.UrlCorreta());
 
 		page.resourceRequeriment();
-		assertEquals("http://www.lesse.com.br/tools/silverbullet/rp2/schedule/resource-requirements/list/68",
-				dsl.UrlCorreta());
 
 		page.resourceEdit();
-		assertEquals("http://www.lesse.com.br/tools/silverbullet/rp2/schedule/resource-requirements/edit/545",
-				dsl.UrlCorreta());
 
 		page.resourceDesc("teste2");
-		assertEquals("teste2", dsl.obterValorCampo("resource_description"));
 
 		page.resourceAmont("1");
-		assertEquals("1", dsl.obterValorCampo("required_amount_of_resource"));
 
 		page.resourceUnit("0.01");
-		assertEquals("0.01", dsl.obterValorCampo("resource_cost_per_unit"));
 
 		page.resourceRR("text");
-		assertEquals("text", dsl.obterValorCampoCss("#rr_txt_4"));
 
 		page.resourceSub();
-		assertEquals("http://www.lesse.com.br/tools/silverbullet/rp2/schedule/resource-requirements/list/68",
-				dsl.UrlCorreta());
 
 	}
 }

@@ -1,5 +1,7 @@
 package Adriel;
 
+import static org.junit.Assert.assertEquals;
+
 import org.openqa.selenium.WebDriver;
 
 public class SilverBulletPage {
@@ -12,14 +14,17 @@ public class SilverBulletPage {
 	
 	public void setEmail(String email) {
 		dsl.escreveID("email", email);
+		assertEquals(email, dsl.obterValorCampo("email"));
 	}
 	
 	public void setSenha(String senha) {
 		dsl.escreveID("password", senha);
+		assertEquals(senha, dsl.obterValorCampo("password"));
 	}
 	
 	public void entrar() {
 		dsl.clicaRadio("login-submit");
+		assertEquals("http://www.lesse.com.br/tools/silverbullet/rp2/projects", dsl.UrlCorreta());
 	}
 	
 	public void inicia() {
@@ -28,39 +33,50 @@ public class SilverBulletPage {
 	
 	public void openProject() {
 		dsl.clicaXpath("//td[3]/a/span");
+		assertEquals("http://www.lesse.com.br/tools/silverbullet/rp2/project/68", dsl.UrlCorreta());
 	}
 	
 	public void resourceRequeriment() {
 		dsl.clicaXpath("//div[4]/div/div[3]/a[2]/div/div");
+		assertEquals("http://www.lesse.com.br/tools/silverbullet/rp2/schedule/resource-requirements/list/68",
+				dsl.UrlCorreta());
 	}
 	
 	public void resourceEdit() {
 		dsl.clicaXpath("//div/div/form/button");
+		assertEquals("http://www.lesse.com.br/tools/silverbullet/rp2/schedule/resource-requirements/edit/545",
+				dsl.UrlCorreta());
 	}
 	
 	public void resourceDesc(String text) {
        dsl.limpaCampoCss("#resource_description");
        dsl.escreveCss("#resource_description", text);
+       assertEquals(text, dsl.obterValorCampo("resource_description"));
    }
 	
 	public void resourceAmont(String numb) {
 		dsl.limpaCampo("required_amount_of_resource");
 		dsl.escreveID("required_amount_of_resource", numb);
+		assertEquals(numb, dsl.obterValorCampo("required_amount_of_resource"));
 	}
 	
 	public void resourceUnit(String unit) {
 		dsl.limpaCampo("resource_cost_per_unit");
 		dsl.escreveID("resource_cost_per_unit", unit);
+		assertEquals(unit, dsl.obterValorCampo("resource_cost_per_unit"));
 	}
 	
 	public void resourceRR(String rr) {
 		dsl.limpaCampoCss("#rr_txt_4");
 		dsl.escreveCss("#rr_txt_4", rr);
+		assertEquals(rr, dsl.obterValorCampoCss("#rr_txt_4"));
 	}
 	
 	public void resourceSub() {
 
 		dsl.clicaRadioCss("#activity-submit");
+		assertEquals("http://www.lesse.com.br/tools/silverbullet/rp2/schedule/resource-requirements/list/68",
+				dsl.UrlCorreta());
 	}
 	
 	public void acitivityList() {
@@ -126,7 +142,7 @@ public class SilverBulletPage {
 		dsl.clicaRadioCss(".btn:nth-child(4)");
 		Thread.sleep(500);
 		dsl.escreveCss(".row:nth-child(1) > .col-lg-6 .form-control", "teste");
-		dsl.escreveCss(".col-lg-12 > .form-group > input", "C:\\Users\\adrie\\OneDrive\\Área de Trabalho\\RP ll\\Nova pasta\\teste.txt");
+		dsl.escreveCss(".col-lg-12 > .form-group > input", System.getProperty("user.dir") + "\\src\\main\\resources\\teste.txt");
 		dsl.clicaRadioCss(".modal-dialog:nth-child(2) .btn-success");
 	}
 
@@ -135,7 +151,7 @@ public class SilverBulletPage {
 		dsl.clicaRadioCss(".col-lg-12 > .btn-info");
 		Thread.sleep(500);
 		dsl.escreveCss(".row:nth-child(1) > .col-lg-6 .form-control", "teste");
-		dsl.escreveCss(".col-lg-12 > .form-group > input", System.getProperty("user.dir") + "\\src\\main\\resources\\ImagemTestes.png");
+		dsl.escreveCss(".col-lg-12 > .form-group > input", System.getProperty("user.dir") + "\\src\\main\\resources\\teste.txt");
 		dsl.clicaRadioCss(".btn-success:nth-child(1)");
 	}
 }
