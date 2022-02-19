@@ -13,4 +13,9 @@ public class SheduleDurationEstimates {
 	public static final String novoPerformedInitDate[] = {"performed_start_date", "id"};
 	public static final String novoPerformedEndDate[] = {"performed_end_date", "id"};
 	public static final String novoSubmit[] = {"activity-submit", "id"};
+	public static final String upload[] = {"//div/div/div/div/div/button[2]", "xpath"};
+	public static final String uploadNome[] = {"//div[2]/div/div[2]/form/div/div/div/input", "xpath"};
+	public static final String uploadArquivo[] = {"//div[2]/div/div/input", "xpath"};
+	public static final String salvaUpload[] = {"//div[3]/div/div/button", "xpath"};
+	public static final String excluiUpload[] = {"//em", "xpath"};
 }

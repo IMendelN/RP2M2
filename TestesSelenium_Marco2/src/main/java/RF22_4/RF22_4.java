@@ -40,7 +40,7 @@ public class RF22_4 {
 	public void fluxoPrincipal() throws InterruptedException {
 		Thread.sleep(10000);
 		fail("Não foi posível realizar o teste pois o \"Duration Estimates\""
-				+ " não estava previamente criado (Conforme Orientava o fluxo principal"
+				+ " não estava previamente criado (Conforme Orientava o fluxo principal" 
 				+ "do testes no git hub), para testar estas funções foi"
 				+ " desenvolvido o fluxoPrincipalCriar que tenta criá-lo" 
 				+ " (embora não consiga devido à outro erro do sisema)");
@@ -69,14 +69,14 @@ public class RF22_4 {
 
 	@Test
 	public void fluxoAlternativo() throws InterruptedException {
-		nav.click("//div/div/div/div/div/button[2]", "xpath");
+		nav.click(SheduleDurationEstimates.upload);
 		Thread.sleep(1000);
-		nav.click("//div[2]/div/div[2]/form/div/div/div/input", "xpath");
-		nav.sendKeys("TESTER22_4Alt", "//div[2]/div/div[2]/form/div/div/div/input", "xpath");
-		nav.sendKeys(System.getProperty("user.dir") + "\\src\\main\\resources\\ImagemTestes.png", "//div[2]/div/div/input", "xpath");
-		nav.click("//div[3]/div/div/button", "xpath");
+		nav.click(SheduleDurationEstimates.uploadNome);
+		nav.sendKeys("TESTER22_4Alt", SheduleDurationEstimates.uploadNome);
+		nav.sendKeys(System.getProperty("user.dir") + "\\src\\main\\resources\\ImagemTestes.png", SheduleDurationEstimates.uploadArquivo);
+		nav.click(SheduleDurationEstimates.salvaUpload);
 		Thread.sleep(1000);
-		nav.click("//em", "xpath");
+		nav.click(SheduleDurationEstimates.excluiUpload);
 		Thread.sleep(1000);
 
 	}
