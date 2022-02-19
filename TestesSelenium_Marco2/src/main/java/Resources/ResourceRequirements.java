@@ -1,7 +1,5 @@
 package Resources;
 
-import static org.junit.Assert.assertEquals;
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -38,27 +36,21 @@ public class ResourceRequirements {
 	@Test
 	public void fluxoAlternativo() throws InterruptedException {
 
-		page.inicia();
+	page.inicia();
+	
+	page.setEmail("adrielluan.aluno@unipampa.edu.br");
+	
+	page.setSenha("1040.shiriuuu");
 
-		page.setEmail("iagonogueira.aluno@unipampa.edu.br");
-		assertEquals("iagonogueira.aluno@unipampa.edu.br", dsl.obterValorCampo("email"));
+    page.entrar();
 
-		page.setSenha("testesenha");
-		assertEquals("testesenha", dsl.obterValorCampo("password"));
+    page.openProject();
 
-		page.entrar();
-		assertEquals("http://www.lesse.com.br/tools/silverbullet/rp2/projects", dsl.UrlCorreta());
+    page.resourceRequeriment();
 
-		page.openProject();
-		assertEquals("http://www.lesse.com.br/tools/silverbullet/rp2/project/68", dsl.UrlCorreta());
-
-		page.resourceRequeriment();
-		assertEquals("http://www.lesse.com.br/tools/silverbullet/rp2/schedule/resource-requirements/list/68",
-				dsl.UrlCorreta());
-
-		Thread.sleep(500);
-
-		page.UploadResource();
-
+    Thread.sleep(500);
+    
+    page.UploadResource();
+	
 	}
 }

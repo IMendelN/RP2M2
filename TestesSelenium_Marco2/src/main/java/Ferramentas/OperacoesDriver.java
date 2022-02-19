@@ -26,6 +26,9 @@ public class OperacoesDriver extends Driver {
 	public void abreScheduleNetworkDiagram() {
 		click(InProjeto.SheNetDiag);
 	}
+	public void abreScheduleDurationEstimates() {
+		click(InProjeto.SheDuraEst);
+	}
 
 	public void scheduleNetworkDiagram_Edit(String tex1, String tex2, String tex3, String tex4)
 			throws InterruptedException {
@@ -75,5 +78,7 @@ public class OperacoesDriver extends Driver {
 		Thread.sleep(1000);
 		click(SheduleNetworkDiagram.UploadSave);
 	}
+	
+
 
 }
