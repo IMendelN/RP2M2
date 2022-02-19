@@ -10,22 +10,20 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import Adriel.DSL;
 import Adriel.SilverBulletPage;
 
-public class ResourceRequirements {
-
+public class CostEstimates {
+	
 	private DSL dsl;
-
 	private SilverBulletPage page;
 
 	@Before
 	public final void setUp() throws Exception {
-
 		System.setProperty("webdriver.chrome.driver", ".\\src\\main\\resources\\chromedriver.exe");
 		WebDriver driver = new ChromeDriver();
 		driver.manage().window().setPosition(new Point(100, 100));
-		driver.manage().window().setSize(new Dimension(1500, 1000));
-		dsl = new DSL(driver);
+		driver.manage().window().setSize(new Dimension(1500, 1500));
+		new DSL(driver);
 		page = new SilverBulletPage(driver);
-
+		dsl = new DSL(driver);
 	}
 
 	@After
@@ -34,29 +32,19 @@ public class ResourceRequirements {
 	}
 
 	@Test
-	public void fluxoAlternativo() throws InterruptedException {
+	public void FluxoPrincipal() throws InterruptedException {
 
-		page.inicia();
-
-		page.setEmail("adrielluan.aluno@unipampa.edu.br");
-
-		page.setSenha("1040.shiriuuu");
-
-		page.inicia();
-
-		page.setEmail("iagonogueira.aluno@unipampa.edu.br");
-
-		page.setSenha("testesenha");
-
-		page.entrar();
+		page.login();
 
 		page.openProject();
-
-		page.resourceRequeriment();
-
+		
+		page.costEstimate();
+		
 		Thread.sleep(500);
-
-		page.UploadResource();
-
+		
+		page.costEstimateEdit();
+		
+		page.costEdit();
+		
 	}
 }

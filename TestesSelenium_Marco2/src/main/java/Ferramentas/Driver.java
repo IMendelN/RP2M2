@@ -7,8 +7,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-import elementos.Login;
-
 public class Driver {
 	WebDriver driver;
  
@@ -89,7 +87,11 @@ public class Driver {
 	public void click(String comando[]) {
 		click(comando[0], comando[1]);
 	}
-
+	
+	public WebElement getElemento(String elemento[]) {
+		return getElemento(elemento[0], elemento[1]);
+	}
+	
 	public WebElement getElemento(String elemento, String by) {
 		WebElement elementoEscolhido = null;
 		switch (by) {
@@ -111,14 +113,6 @@ public class Driver {
 			
 		}
 		return elementoEscolhido;
-	}
-
-	public void fazLogin() throws InterruptedException {
-			Thread.sleep(500);
-			sendKeys("dionasmuller.aluno@unipampa.edu.br", Login.email);
-			sendKeys("senhaTeste", Login.senha);
-			click(Login.login);
-			Thread.sleep(500);
 	}
 
 	public void limpaTexto(String elemento, String by) {

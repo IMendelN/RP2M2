@@ -1,4 +1,6 @@
-package Resources;
+package Adriel;
+
+import static org.junit.Assert.assertEquals;
 
 import org.junit.After;
 import org.junit.Before;
@@ -7,56 +9,58 @@ import org.openqa.selenium.Dimension;
 import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import Adriel.DSL;
-import Adriel.SilverBulletPage;
 
-public class ResourceRequirements {
+public class Resource {
 
 	private DSL dsl;
 
 	private SilverBulletPage page;
 
+	
 	@Before
 	public final void setUp() throws Exception {
-
 		System.setProperty("webdriver.chrome.driver", ".\\src\\main\\resources\\chromedriver.exe");
-		WebDriver driver = new ChromeDriver();
+	    WebDriver driver = new ChromeDriver();
 		driver.manage().window().setPosition(new Point(100, 100));
-		driver.manage().window().setSize(new Dimension(1500, 1000));
+		driver.manage().window().setSize(new Dimension(1500,1500));
 		dsl = new DSL(driver);
 		page = new SilverBulletPage(driver);
+		driver.manage().window().setSize(new Dimension(900, 900));
+		dsl = new DSL(driver);
+
 
 	}
-
-	@After
+	
+	@After 
 	public void Finalizar() {
-		dsl.close();
+		dsl.close();;
 	}
-
+	
 	@Test
-	public void fluxoAlternativo() throws InterruptedException {
+	public void FluxoPrincipal()   { 
 
 		page.inicia();
-
+		
 		page.setEmail("adrielluan.aluno@unipampa.edu.br");
-
+		
 		page.setSenha("1040.shiriuuu");
 
-		page.inicia();
+        page.entrar();
+ 
+        page.openProject();
 
-		page.setEmail("iagonogueira.aluno@unipampa.edu.br");
+        page.resourceRequeriment();
 
-		page.setSenha("testesenha");
+        page.resourceEdit();
 
-		page.entrar();
+		page.resourceDesc("teste2");
 
-		page.openProject();
+		page.resourceAmont("1");
 
-		page.resourceRequeriment();
+		page.resourceUnit("0.01");
 
-		Thread.sleep(500);
-
-		page.UploadResource();
-
-	}
+		page.resourceRR("text");
+		
+			
+	}	
 }
