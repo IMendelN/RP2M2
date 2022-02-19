@@ -1,20 +1,17 @@
 package RF22_4;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.fail;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.openqa.selenium.WebElement;
 
 import Ferramentas.LeitorCsv;
 import Ferramentas.OperacoesDriver;
 import elementos.Login;
 import elementos.SheduleDurationEstimates;
-import elementos.SheduleNetworkDiagram;
 
 public class RF22_4 {
 
@@ -69,7 +66,20 @@ public class RF22_4 {
 	assertEquals(SheduleDurationEstimates.novoURL, nav.getUrl());
 	}
 	
-	
+
+	@Test
+	public void fluxoAlternativo() throws InterruptedException {
+		nav.click("//div/div/div/div/div/button[2]", "xpath");
+		Thread.sleep(1000);
+		nav.click("//div[2]/div/div[2]/form/div/div/div/input", "xpath");
+		nav.sendKeys("TESTER22_4Alt", "//div[2]/div/div[2]/form/div/div/div/input", "xpath");
+		nav.sendKeys(System.getProperty("user.dir") + "\\src\\main\\resources\\ImagemTestes.png", "//div[2]/div/div/input", "xpath");
+		nav.click("//div[3]/div/div/button", "xpath");
+		Thread.sleep(1000);
+		nav.click("//em", "xpath");
+		Thread.sleep(1000);
+
+	}
 
 	@After
 	public void after() throws InterruptedException {

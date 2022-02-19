@@ -77,7 +77,7 @@ public class OperacoesDriver extends Driver {
 	public void scheduleNetworkDiagram_UploadExcecao() throws InterruptedException {
 		click(SheduleNetworkDiagram.Upload);
 		Thread.sleep(1000);
-		click(SheduleNetworkDiagram.UploadSave);
+		click(SheduleNetworkDiagram.UploadSave); 
 	}
 	
 	public void scheduleDurationEstimates_criarNovo( String duracao1, String dataInicio1, String dataFim1,String duracao2, String dataInicio2, String dataFim2) throws InterruptedException {

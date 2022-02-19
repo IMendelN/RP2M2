@@ -27,7 +27,7 @@ public class TesteRF22_2 {
 	}
 	
 	@Before
-	public final void setBefore() throws Exception {
+	public final void setBefore() throws Exception { 
 		nav = new OperacoesDriver();
 		nav.get(Login.URL);
 		nav.fazLogin("dionasmuller.aluno@unipampa.edu.br", "senhaTeste");

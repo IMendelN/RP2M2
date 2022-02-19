@@ -36,21 +36,27 @@ public class ResourceRequirements {
 	@Test
 	public void fluxoAlternativo() throws InterruptedException {
 
-	page.inicia();
-	
-	page.setEmail("adrielluan.aluno@unipampa.edu.br");
-	
-	page.setSenha("1040.shiriuuu");
+		page.inicia();
 
-    page.entrar();
+		page.setEmail("adrielluan.aluno@unipampa.edu.br");
 
-    page.openProject();
+		page.setSenha("1040.shiriuuu");
 
-    page.resourceRequeriment();
+		page.inicia();
 
-    Thread.sleep(500);
-    
-    page.UploadResource();
-	
+		page.setEmail("iagonogueira.aluno@unipampa.edu.br");
+
+		page.setSenha("testesenha");
+
+		page.entrar();
+
+		page.openProject();
+
+		page.resourceRequeriment();
+
+		Thread.sleep(500);
+
+		page.UploadResource();
+
 	}
 }
