@@ -3,6 +3,7 @@ package Ferramentas;
 import elementos.InProjeto;
 import elementos.InicioProjeto;
 import elementos.Login;
+import elementos.SheduleDurationEstimates;
 import elementos.SheduleNetworkDiagram;
 
 public class OperacoesDriver extends Driver {
@@ -79,6 +80,19 @@ public class OperacoesDriver extends Driver {
 		click(SheduleNetworkDiagram.UploadSave);
 	}
 	
-
-
+	public void scheduleDurationEstimates_criarNovo( String duracao1, String dataInicio1, String dataFim1,String duracao2, String dataInicio2, String dataFim2) throws InterruptedException {
+		click(SheduleDurationEstimates.novo);
+		Thread.sleep(1000);
+		click(SheduleDurationEstimates.novoNome);
+		Thread.sleep(1000);
+		click(SheduleDurationEstimates.novoNomeSelect1);
+		Thread.sleep(1000);
+		sendKeys(duracao1, SheduleDurationEstimates.novoEstimatedDuration);
+		sendKeys(dataInicio1, SheduleDurationEstimates.novoEstimatedInitDate);
+		sendKeys(dataFim1,SheduleDurationEstimates.novoEstimatedEndDate);
+		sendKeys(duracao2, SheduleDurationEstimates.novoPerformedDuration);
+		sendKeys(dataInicio2, SheduleDurationEstimates.novoPerformedInitDate);
+		sendKeys(dataFim2, SheduleDurationEstimates.novoPerformedEndDate);
+		click(SheduleDurationEstimates.novoSubmit);
+	}
 }
