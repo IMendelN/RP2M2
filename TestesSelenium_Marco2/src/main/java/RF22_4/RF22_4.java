@@ -69,14 +69,17 @@ public class RF22_4 {
 
 	@Test
 	public void fluxoAlternativo() throws InterruptedException {
+		assertEquals(SheduleDurationEstimates.URL2, nav.getUrl());
 		nav.click(SheduleDurationEstimates.upload);
 		Thread.sleep(1000);
 		nav.click(SheduleDurationEstimates.uploadNome);
 		nav.sendKeys("TESTER22_4Alt", SheduleDurationEstimates.uploadNome);
 		nav.sendKeys(System.getProperty("user.dir") + "\\src\\main\\resources\\ImagemTestes.png", SheduleDurationEstimates.uploadArquivo);
 		nav.click(SheduleDurationEstimates.salvaUpload);
+		assertEquals(SheduleDurationEstimates.URL2, nav.getUrl());
 		Thread.sleep(1000);
 		nav.click(SheduleDurationEstimates.excluiUpload);
+		assertEquals(SheduleDurationEstimates.URL2, nav.getUrl());
 		Thread.sleep(1000);
 
 	}
