@@ -30,6 +30,9 @@ public class OperacoesDriver extends Driver {
 	public void abreScheduleDurationEstimates() {
 		click(InProjeto.SheDuraEst);
 	}
+	public void abreScheduleProjectCalendar() {
+		click(InProjeto.SheCalProj);
+	}
 
 	public void scheduleNetworkDiagram_Edit(String tex1, String tex2, String tex3, String tex4)
 			throws InterruptedException {
