@@ -1,9 +1,12 @@
 package Ferramentas;
 
+import org.junit.Test;
+
 import elementos.InProjeto;
 import elementos.InicioProjeto;
 import elementos.Login;
 import elementos.SheduleDurationEstimates;
+import elementos.SheduleEarnedValueManagement;
 import elementos.SheduleNetworkDiagram;
 
 public class OperacoesDriver extends Driver {
@@ -12,6 +15,7 @@ public class OperacoesDriver extends Driver {
 		super();
 	}
 
+	@Test
 	public void fazLogin(String email, String senha) throws InterruptedException {
 		Thread.sleep(500);
 		sendKeys(email, Login.email);
@@ -20,17 +24,22 @@ public class OperacoesDriver extends Driver {
 		Thread.sleep(500);
 	}
 
+	@Test
 	public void abreProjeto1() {
 		click(InicioProjeto.AbrirProjeto1);
 	}
 
+	@Test
 	public void abreScheduleNetworkDiagram() {
 		click(InProjeto.SheNetDiag);
 	}
+	
+	@Test
 	public void abreScheduleDurationEstimates() {
 		click(InProjeto.SheDuraEst);
 	}
-
+	
+	@Test
 	public void scheduleNetworkDiagram_Edit(String tex1, String tex2, String tex3, String tex4)
 			throws InterruptedException {
 		click(SheduleNetworkDiagram.Edit);
@@ -51,6 +60,7 @@ public class OperacoesDriver extends Driver {
 		click(SheduleNetworkDiagram.EditSubmit);
 	}
 
+	@Test
 	public void scheduleNetworkDiagram_EditExcecao() throws InterruptedException {
 		Thread.sleep(1000);
 		click(SheduleNetworkDiagram.Edit);
@@ -61,6 +71,7 @@ public class OperacoesDriver extends Driver {
 		click(SheduleNetworkDiagram.EditSubmit);
 	}
 
+	@Test
 	public void scheduleNetworkDiagram_Upload(String texto, String caminhoImagem) throws InterruptedException {
 		click(SheduleNetworkDiagram.Upload);
 		Thread.sleep(1000);
@@ -68,19 +79,23 @@ public class OperacoesDriver extends Driver {
 		sendKeys(caminhoImagem, SheduleNetworkDiagram.UploadArquivo);
 		click(SheduleNetworkDiagram.UploadSave);
 	}
-	
+
+	@Test
 	public void scheduleNetworkDiagram_ExcluiImagem() throws InterruptedException {
 		Thread.sleep(100);
 		click(SheduleNetworkDiagram.ExcluiImagem);
 	}
-	
+
+	@Test
 	public void scheduleNetworkDiagram_UploadExcecao() throws InterruptedException {
 		click(SheduleNetworkDiagram.Upload);
 		Thread.sleep(1000);
-		click(SheduleNetworkDiagram.UploadSave); 
+		click(SheduleNetworkDiagram.UploadSave);
 	}
-	
-	public void scheduleDurationEstimates_criarNovo( String duracao1, String dataInicio1, String dataFim1,String duracao2, String dataInicio2, String dataFim2) throws InterruptedException {
+
+	@Test
+	public void scheduleDurationEstimates_criarNovo(String duracao1, String dataInicio1, String dataFim1,
+			String duracao2, String dataInicio2, String dataFim2) throws InterruptedException {
 		click(SheduleDurationEstimates.novo);
 		Thread.sleep(1000);
 		click(SheduleDurationEstimates.novoNome);
@@ -89,10 +104,38 @@ public class OperacoesDriver extends Driver {
 		Thread.sleep(1000);
 		sendKeys(duracao1, SheduleDurationEstimates.novoEstimatedDuration);
 		sendKeys(dataInicio1, SheduleDurationEstimates.novoEstimatedInitDate);
-		sendKeys(dataFim1,SheduleDurationEstimates.novoEstimatedEndDate);
+		sendKeys(dataFim1, SheduleDurationEstimates.novoEstimatedEndDate);
 		sendKeys(duracao2, SheduleDurationEstimates.novoPerformedDuration);
 		sendKeys(dataInicio2, SheduleDurationEstimates.novoPerformedInitDate);
 		sendKeys(dataFim2, SheduleDurationEstimates.novoPerformedEndDate);
 		click(SheduleDurationEstimates.novoSubmit);
 	}
+
+	@Test
+	public void scheduleEarnedValueManagement_Edit(String T1, String T2, String T3, String T4, String T5, String T6,
+			String T8, String T9, String T10) throws InterruptedException {
+		click(SheduleEarnedValueManagement.Edit);
+		Thread.sleep(1000);
+		limpaTexto(SheduleEarnedValueManagement.EditEV1);
+		sendKeys(T1, SheduleEarnedValueManagement.EditEV1);
+		limpaTexto(SheduleEarnedValueManagement.EditPV2);
+		sendKeys(T2, SheduleEarnedValueManagement.EditPV2);
+		limpaTexto(SheduleEarnedValueManagement.EditAC3);
+		sendKeys(T3, SheduleEarnedValueManagement.EditAC3);
+		limpaTexto(SheduleEarnedValueManagement.EditBudCumuCost4);
+		sendKeys(T4, SheduleEarnedValueManagement.EditBudCumuCost4);
+		limpaTexto(SheduleEarnedValueManagement.EditSV5);
+		sendKeys(T5, SheduleEarnedValueManagement.EditSV5);
+		limpaTexto(SheduleEarnedValueManagement.EditCV6);
+		sendKeys(T6, SheduleEarnedValueManagement.EditCV6);
+		limpaTexto(SheduleEarnedValueManagement.EditSPI8);
+		sendKeys(T8, SheduleEarnedValueManagement.EditSPI8);
+		limpaTexto(SheduleEarnedValueManagement.EditCostPerInd9);
+		sendKeys(T9, SheduleEarnedValueManagement.EditCostPerInd9);
+		limpaTexto(SheduleEarnedValueManagement.EditEstOfComp10);
+		sendKeys(T10, SheduleEarnedValueManagement.EditEstOfComp10);
+		Thread.sleep(5000);
+		click(SheduleEarnedValueManagement.EditSubmit);
+	}
+	
 }
