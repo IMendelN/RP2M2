@@ -12,5 +12,9 @@ public class ScheduleProjectCalendar {
 	public static final String AvailabilityEnds [] = {"//*[@id=\"availability_ends\"]", "xpath"};
 	public static final String AllocationStart [] = {"//*[@id=\"allocation_start\"]", "xpath"};
 	public static final String AllocationEnds[] = {"//*[@id=\"allocation_ends\"]", "xpath"};
+	public static final String upload[] = {"(//button[@type='button'])[6]", "xpath"};
+	public static final String uploadImage[] = {".col-lg-12 > .form-group > input", "css"};
+	public static final String uploadName[] = {"//input[@name='alt']", "xpath"};
+	public static final String uploadSave[] = {"//div[3]/div/div/button/i", "xpath"};
 	
 }

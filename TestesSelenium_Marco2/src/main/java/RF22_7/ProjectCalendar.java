@@ -29,7 +29,7 @@ public class ProjectCalendar {
 	public final void setBefore() throws Exception {
 		nav = new OperacoesDriver();
 		nav.get(Login.URL);
-		nav.fazLogin("iagonogueira.aluno@unipampa.edu.br", "testesenha");
+		nav.fazLogin("marcoseduardo.aluno@unipampa.edu.br", "senhateste123");
 		Thread.sleep(1000);
 		nav.getDriver().manage().window().maximize();
 		nav.abreProjeto1();
@@ -39,7 +39,7 @@ public class ProjectCalendar {
 
 	@Test
 	public void fluxoPrincipal() throws InterruptedException {
-		nav.get("http://www.lesse.com.br/tools/silverbullet/rp2/project/68");
+		nav.get("http://www.lesse.com.br/tools/silverbullet/rp2/project/72");
 		nav.click(ScheduleProjectCalendar.PCURL);
 		Thread.sleep(2000);
 		nav.click(ScheduleProjectCalendar.edit);
@@ -57,12 +57,12 @@ public class ProjectCalendar {
 		nav.limpaTexto(ScheduleProjectCalendar.AllocationEnds);
 		nav.sendKeys("2022-03-08", ScheduleProjectCalendar.AllocationEnds);
 		nav.click(ScheduleProjectCalendar.save);
-		assertEquals("http://www.lesse.com.br/tools/silverbullet/rp2/schedule/project-calendars/list/68", nav.getUrl());
+		assertEquals("http://www.lesse.com.br/tools/silverbullet/rp2/schedule/project-calendars/list/72", nav.getUrl());
 	}
 
 	@Test
 	public void fluxoExcecao() throws InterruptedException {
-		nav.get("http://www.lesse.com.br/tools/silverbullet/rp2/project/68");
+		nav.get("http://www.lesse.com.br/tools/silverbullet/rp2/project/72");
 		nav.click(ScheduleProjectCalendar.PCURL);
 		Thread.sleep(2000);
 		nav.click(ScheduleProjectCalendar.edit);
@@ -81,7 +81,24 @@ public class ProjectCalendar {
 		nav.sendKeys("", ScheduleProjectCalendar.AllocationEnds);
 		Thread.sleep(5000);
 		nav.click(ScheduleProjectCalendar.save);
-		assertEquals("http://www.lesse.com.br/tools/silverbullet/rp2/schedule/project-calendars/edit/545", nav.getUrl());
+		assertEquals("http://www.lesse.com.br/tools/silverbullet/rp2/schedule/project-calendars/edit/524", nav.getUrl());
+	}
+	
+	@Test
+	public void fluxoAlternativo() throws InterruptedException {
+		nav.get("http://www.lesse.com.br/tools/silverbullet/rp2/project/72");
+	    nav.click(ScheduleProjectCalendar.PCURL);
+	    Thread.sleep(500);
+	    nav.click(ScheduleProjectCalendar.upload);
+	    Thread.sleep(500);
+	    nav.click(ScheduleProjectCalendar.uploadName);
+	    nav.sendKeys("TesteImage1", ScheduleProjectCalendar.uploadName);
+	    Thread.sleep(1000);
+	    nav.sendKeys(System.getProperty("user.dir") + "\\src\\main\\resources\\ImagemTestes.png", ScheduleProjectCalendar.uploadImage);
+	    nav.click(ScheduleProjectCalendar.uploadSave);
+	    assertEquals("http://www.lesse.com.br/tools/silverbullet/rp2/schedule/project-calendars/list/72?", nav.getUrl());
+	    Thread.sleep(1000);
+	    
 	}
 
 	@After
