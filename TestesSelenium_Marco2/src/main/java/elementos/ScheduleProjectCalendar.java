@@ -5,5 +5,12 @@ public class ScheduleProjectCalendar {
 	public static final String PCURL[] = {"//div[4]/div/div[2]/a[3]/div/div", "xpath"};
 	public static final String edit[] = {"//em", "xpath"};
 	public static final String save[] = {"//div[8]/button", "xpath"};
+	public static final String ActivityName[] = {"//div/div/div/form/ul/div[1]/select", "xpath"};
+	public static final String StakeHolder[] = {"//div/div/div/form/ul/div[2]/select", "xpath"};
+	public static final String Function[]= {"//*[@id=\"pca_txt_2\"]", "xpath"};
+	public static final String AvailabilityStart [] = {"//*[@id=\"availability_start\"]", "xpath"};
+	public static final String AvailabilityEnds [] = {"//*[@id=\"availability_ends\"]", "xpath"};
+	public static final String AllocationStart [] = {"//*[@id=\"allocation_start\"]", "xpath"};
+	public static final String AllocationEnds[] = {"//*[@id=\"allocation_ends\"]", "xpath"};
 	
 }

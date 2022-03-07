@@ -1,9 +1,14 @@
 package RF22_7;
 
+import static org.junit.Assert.assertEquals;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 
 import Ferramentas.LeitorCsv;
 import Ferramentas.OperacoesDriver;
@@ -31,22 +36,58 @@ public class ProjectCalendar {
 		Thread.sleep(500);
 		nav.abreScheduleProjectCalendar();
 	}
-	
+
 	@Test
 	public void fluxoPrincipal() throws InterruptedException {
 		nav.get("http://www.lesse.com.br/tools/silverbullet/rp2/project/68");
-	    nav.click(ScheduleProjectCalendar.PCURL);
-	    Thread.sleep(500);
-	    nav.click(ScheduleProjectCalendar.edit);
-	    Thread.sleep(500);
-	    nav.click(ScheduleProjectCalendar.save);
-	    
+		nav.click(ScheduleProjectCalendar.PCURL);
+		Thread.sleep(2000);
+		nav.click(ScheduleProjectCalendar.edit);
+		Thread.sleep(2000);
+		nav.click(ScheduleProjectCalendar.ActivityName);
+		nav.click(ScheduleProjectCalendar.StakeHolder);
+		nav.limpaTexto(ScheduleProjectCalendar.Function);
+		nav.sendKeys("teste", ScheduleProjectCalendar.Function);
+		nav.limpaTexto(ScheduleProjectCalendar.AvailabilityStart);
+		nav.sendKeys("2022-03-07", ScheduleProjectCalendar.AvailabilityStart);
+		nav.limpaTexto(ScheduleProjectCalendar.AvailabilityEnds);
+		nav.sendKeys("2022-03-08", ScheduleProjectCalendar.AvailabilityEnds);
+		nav.limpaTexto(ScheduleProjectCalendar.AllocationStart);
+		nav.sendKeys("2022-03-07", ScheduleProjectCalendar.AllocationStart);
+		nav.limpaTexto(ScheduleProjectCalendar.AllocationEnds);
+		nav.sendKeys("2022-03-08", ScheduleProjectCalendar.AllocationEnds);
+		nav.click(ScheduleProjectCalendar.save);
+		assertEquals("http://www.lesse.com.br/tools/silverbullet/rp2/schedule/project-calendars/list/68", nav.getUrl());
 	}
+
+	@Test
+	public void fluxoExcecao() throws InterruptedException {
+		nav.get("http://www.lesse.com.br/tools/silverbullet/rp2/project/68");
+		nav.click(ScheduleProjectCalendar.PCURL);
+		Thread.sleep(2000);
+		nav.click(ScheduleProjectCalendar.edit);
+		Thread.sleep(2000);
+		nav.click(ScheduleProjectCalendar.ActivityName);
+		nav.click(ScheduleProjectCalendar.StakeHolder);
+		nav.limpaTexto(ScheduleProjectCalendar.Function);
+		nav.sendKeys("", ScheduleProjectCalendar.Function);
+		nav.limpaTexto(ScheduleProjectCalendar.AvailabilityStart);
+		nav.sendKeys("", ScheduleProjectCalendar.AvailabilityStart);
+		nav.limpaTexto(ScheduleProjectCalendar.AvailabilityEnds);
+		nav.sendKeys("", ScheduleProjectCalendar.AvailabilityEnds);
+		nav.limpaTexto(ScheduleProjectCalendar.AllocationStart);
+		nav.sendKeys("", ScheduleProjectCalendar.AllocationStart);
+		nav.limpaTexto(ScheduleProjectCalendar.AllocationEnds);
+		nav.sendKeys("", ScheduleProjectCalendar.AllocationEnds);
+		Thread.sleep(5000);
+		nav.click(ScheduleProjectCalendar.save);
+		assertEquals("http://www.lesse.com.br/tools/silverbullet/rp2/schedule/project-calendars/edit/545", nav.getUrl());
+	}
+
 	@After
 	public void close() throws InterruptedException {
 		Thread.sleep(500);
 		nav.getDriver().close();
 	}
 
-	
 }
