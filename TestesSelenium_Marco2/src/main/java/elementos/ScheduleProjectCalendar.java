@@ -16,5 +16,6 @@ public class ScheduleProjectCalendar {
 	public static final String uploadImage[] = {".col-lg-12 > .form-group > input", "css"};
 	public static final String uploadName[] = {"//input[@name='alt']", "xpath"};
 	public static final String uploadSave[] = {"//div[3]/div/div/button/i", "xpath"};
+	public static final String delete[] = {"//div/div/div/div[4]/div/div/table/tbody/tr/td[4]/div/div/a", "xpath"};
 	
 }

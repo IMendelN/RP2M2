@@ -96,7 +96,8 @@ public class ProjectCalendar {
 	    Thread.sleep(1000);
 	    nav.sendKeys(System.getProperty("user.dir") + "\\src\\main\\resources\\ImagemTestes.png", ScheduleProjectCalendar.uploadImage);
 	    nav.click(ScheduleProjectCalendar.uploadSave);
-	    assertEquals("http://www.lesse.com.br/tools/silverbullet/rp2/schedule/project-calendars/list/72?", nav.getUrl());
+	    assertEquals("http://www.lesse.com.br/tools/silverbullet/rp2/schedule/project-calendars/list/72", nav.getUrl());
+	    nav.click(ScheduleProjectCalendar.delete);
 	    Thread.sleep(1000);
 	    
 	}
