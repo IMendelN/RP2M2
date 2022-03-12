@@ -5,6 +5,7 @@ import org.junit.Test;
 import elementos.InProjeto;
 import elementos.InicioProjeto;
 import elementos.Login;
+import elementos.ProjScoStat;
 import elementos.SheduleDurationEstimates;
 import elementos.SheduleEarnedValueManagement;
 import elementos.SheduleNetworkDiagram;
@@ -142,5 +143,31 @@ public class OperacoesDriver extends Driver {
 		Thread.sleep(5000);
 		click(SheduleEarnedValueManagement.EditSubmit);
 	}
+	
+	@Test
+	public void abreScopeStatement() throws InterruptedException {
+		get(Login.URL);
+		fazLogin("dionasmuller.aluno@unipampa.edu.br", "senhaTeste");
+		Thread.sleep(1000);
+		getDriver().manage().window().maximize();
+		abreProjeto1();
+		Thread.sleep(500);
+		click(InProjeto.ProjScoStat);
+		Thread.sleep(500);
+	}
+	
+	public void editaScopeStatement(String t1, String t2, String t3, String t4) throws InterruptedException {
+		Thread.sleep(500);
+		limpaTexto(ProjScoStat.Texto1);
+		sendKeys(t1 ,ProjScoStat.Texto1);
+		limpaTexto(ProjScoStat.Texto2);
+		sendKeys(t2 ,ProjScoStat.Texto2);
+		limpaTexto(ProjScoStat.Texto3);
+		sendKeys(t3 ,ProjScoStat.Texto3);
+		limpaTexto(ProjScoStat.Texto4);
+		sendKeys(t4 ,ProjScoStat.Texto4);
+		Thread.sleep(500);
+	}
+	
 	
 }

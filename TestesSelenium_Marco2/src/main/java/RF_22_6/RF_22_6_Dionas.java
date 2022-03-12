@@ -53,6 +53,7 @@ public class RF_22_6_Dionas{
 		nav.scheduleEarnedValueManagement_Edit("340.486", "54584.18", "-4652", "80000", "-3446", "80562", "-18.18", "14501", "-12");
 		Thread.sleep(1000);
 		assertEquals(SheduleEarnedValueManagement.EditURL, nav.getUrl());
+		Thread.sleep(1000);
 		nav.click(SheduleEarnedValueManagement.EditBack);
 		assertEquals(SheduleEarnedValueManagement.URL + "?", nav.getUrl());
 	}

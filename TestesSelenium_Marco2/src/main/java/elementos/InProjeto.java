@@ -6,4 +6,5 @@ public class InProjeto {
 	public static final String SheDuraEst[] = {"//div/div[4]/div/div[4]/a[2]/div/div", "xpath"};
 	public static final String SheEarValManag[] = {"//div[4]/div/div[4]/a[1]/div/div", "xpath"};
 	public static final String SheCalProj[] = {"//div[4]/div/div[2]/a[3]/div/div", "xpath"};
+	public static final String ProjScoStat [] = {"//div/div[3]/div/div[2]/a[3]/div/div", "xpath"};
 }
