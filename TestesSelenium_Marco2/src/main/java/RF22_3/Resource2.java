@@ -8,8 +8,8 @@ import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-import Adriel.DSL;
-import Adriel.SilverBulletPage;
+import DSL_SilverBullet.DSL;
+import DSL_SilverBullet.SilverBulletPage;
 
 public class Resource2 {
 
