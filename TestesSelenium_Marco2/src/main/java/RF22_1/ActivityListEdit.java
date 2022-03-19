@@ -1,6 +1,4 @@
-package Adriel;
-
-import static org.junit.Assert.assertEquals;
+package RF22_1;
 
 import org.junit.After;
 import org.junit.Before;
@@ -9,6 +7,9 @@ import org.openqa.selenium.Dimension;
 import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+
+import Adriel.DSL;
+import Adriel.SilverBulletPage;
 
 public class ActivityListEdit {
 	

@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
 public class DSL {
-
+ 
 	private WebDriver driver;
 	
 	public DSL(WebDriver driver) {
@@ -34,7 +34,7 @@ public class DSL {
 		
 	return driver.findElement(By.id(id_campo)).getAttribute("value");
 		 
-	}
+	} 
 	
 	public String obterValorCampoCss(String id_campo) {
 		
@@ -51,10 +51,17 @@ public class DSL {
 	public String obterValorCombo(String id) {
 		WebElement element = driver.findElement(By.id(id));
 		Select combo = new Select(element);
+		return combo.getFirstSelectedOption().getText();	
+	}
+
+	public String obterValorComboName(String name) {
+		WebElement element = driver.findElement(By.name(name));
+		Select combo = new Select(element);
 		return combo.getFirstSelectedOption().getText();
 		
 	}
-
+	
+	
 	public void limpaCampo(String id_campo) {
 		driver.findElement(By.id(id_campo)).clear();
 		}
@@ -66,7 +73,7 @@ public class DSL {
 	public void limpaCampoXpath(String xpath_campo) {
 		driver.findElement(By.xpath(xpath_campo)).clear();
 	}
-
+ 
 	public void clicaRadio(String id_campo) {
 		driver.findElement(By.id(id_campo)).click();
 	}
@@ -95,6 +102,15 @@ public class DSL {
 		combo.selectByVisibleText(valor);
 		
 	}
+	 
+	public void selecionarComboName(String name, int valor) {
+		
+		WebElement element = driver.findElement(By.name(name));
+		Select combo = new Select(element);
+		combo.selectByIndex(valor);
+		 
+	}
+	
 	
 	public String UrlCorreta() {
 

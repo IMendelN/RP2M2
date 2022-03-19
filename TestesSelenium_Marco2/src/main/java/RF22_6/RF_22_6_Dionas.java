@@ -1,8 +1,6 @@
-package RF_22_6;
+package RF22_6;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
-import static org.junit.Assert.fail;
 
 import org.junit.After;
 import org.junit.Before;
@@ -13,7 +11,6 @@ import Ferramentas.LeitorCsv;
 import Ferramentas.OperacoesDriver;
 import elementos.InProjeto;
 import elementos.Login;
-import elementos.SheduleDurationEstimates;
 import elementos.SheduleEarnedValueManagement;
 
 public class RF_22_6_Dionas{

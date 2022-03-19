@@ -1,6 +1,4 @@
-package Adriel;
-
-import static org.junit.Assert.assertEquals;
+package RF22_1;
 
 import org.junit.After;
 import org.junit.Before;
@@ -10,9 +8,11 @@ import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public class ActivityListDel {
+import Adriel.DSL;
+import Adriel.SilverBulletPage;
+
+public class ActivityList {
 	
-	public static WebDriver driver;
 	private DSL dsl;
 	private SilverBulletPage page;
 	
@@ -29,11 +29,12 @@ public class ActivityListDel {
 	
 		@After
 		public void Finalizar() {
-			dsl.close();
+			dsl.close();;
 		}
+		
 		@Test
-		public void testPrincipal() throws InterruptedException {
-			
+		public void fluxoPrincipal() throws InterruptedException {
+		
 			page.inicia();
 			
 			page.setEmail("adrielluan.aluno@unipampa.edu.br");
@@ -45,8 +46,25 @@ public class ActivityListDel {
 	        page.openProject();
 
 	        page.acitivityList();
-	        
-	        page.activityDel();
+	
+	        page.listNew();
+ 
+	        page.activityLabel("test1");
 
+	        page.milestone("test2");
+	        
+	        page.activityName("test3");
+	        
+	        page.projectPashe("test4");
+	        
+	        page.WBSid("test4"); 
+	        
+	        page.activityDesc("test5");
+	        
+	        page.activitySave();
+
+        
+        
+        
 	}
 }

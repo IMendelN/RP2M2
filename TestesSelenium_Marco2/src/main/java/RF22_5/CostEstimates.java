@@ -1,4 +1,4 @@
-package Resources;
+package RF22_5;
 
 import org.junit.After;
 import org.junit.Before;
@@ -7,14 +7,12 @@ import org.openqa.selenium.Dimension;
 import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-
 import Adriel.DSL;
 import Adriel.SilverBulletPage;
 
-public class Resource {
-
+public class CostEstimates {
+	
 	private DSL dsl;
-
 	private SilverBulletPage page;
 
 	@Before
@@ -23,45 +21,30 @@ public class Resource {
 		WebDriver driver = new ChromeDriver();
 		driver.manage().window().setPosition(new Point(100, 100));
 		driver.manage().window().setSize(new Dimension(1500, 1500));
-		dsl = new DSL(driver);
+		new DSL(driver);
 		page = new SilverBulletPage(driver);
-		driver.manage().window().setSize(new Dimension(900, 900));
 		dsl = new DSL(driver);
-
 	}
 
 	@After
 	public void Finalizar() {
 		dsl.close();
-		;
 	}
 
 	@Test
-	public void FluxoPrincipal() {
+	public void FluxoPrincipal() throws InterruptedException {
 
-		page.inicia();
-
-		page.setEmail("iagonogueira.aluno@unipampa.edu.br");
-
-		page.setSenha("testesenha");
-
-		page.entrar();
+		page.login();
 
 		page.openProject();
-
-		page.resourceRequeriment();
-
-		page.resourceEdit();
-
-		page.resourceDesc("teste2");
-
-		page.resourceAmont("1");
-
-		page.resourceUnit("0.01");
-
-		page.resourceRR("text");
-
-		page.resourceSub();
-
+		
+		page.costEstimate();
+		
+		Thread.sleep(500);
+		
+		page.costEstimateEdit();
+		
+		page.costEdit();
+		
 	}
 }

@@ -1,4 +1,4 @@
-package TesteLogin;
+package RF01;
 
 import static org.junit.Assert.assertEquals;
 
@@ -24,9 +24,9 @@ public class TesteLogin {
 
 	@BeforeClass
 	public static final void setUp() throws Exception {
-		leitorResultados = new LeitorCsv(".\\src\\main\\java\\TesteLogin\\Resultados.csv");
-		leitorComandos = new LeitorCsv(".\\src\\main\\java\\TesteLogin\\Comandos.csv");
 		System.setProperty("webdriver.chrome.driver", ".\\src\\main\\resources\\chromedriver.exe");
+		leitorResultados = new LeitorCsv(".\\src\\main\\java\\RF01\\Resultados.csv");
+		leitorComandos = new LeitorCsv(".\\src\\main\\java\\RF01\\Comandos.csv");
 	}
 
 	@Before

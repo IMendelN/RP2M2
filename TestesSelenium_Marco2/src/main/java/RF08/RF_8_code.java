@@ -1,4 +1,4 @@
-package RF_8;
+package RF08;
 
 import static org.junit.Assert.assertEquals;
 
@@ -44,6 +44,7 @@ public class RF_8_code{
 	nav.click(ProjScoStat.Save);
 	Thread.sleep(5000);
 	assertEquals(ProjScoStat.URL + "?", nav.getUrl());
+	//fail("Salvando textos vazios!");
 	}
 
 	@Test
